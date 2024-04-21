@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  torch_app:
+  mnist:
     build:
       context: .
       args:
