@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  torch_app:
+    build:
+      context: .
+      args:
+        - GUEST_UID=$HOST_UID
+        - GUEST_GID=$HOST_GID
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
